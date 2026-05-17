@@ -12,12 +12,13 @@ with st.sidebar:
     uploaded_file = st.file_uploader("Choose a PDF file", type="pdf")
 
     if uploaded_file is not None:
-        # Save uploaded file to uploads folder
         # Create uploads folder if it doesn't exist
-os.makedirs("uploads", exist_ok=True)
-save_path = os.path.join("uploads", uploaded_file.name)
-with open(save_path, "wb") as f:
-    f.write(uploaded_file.getbuffer())
+        os.makedirs("uploads", exist_ok=True)
+        
+        # Save uploaded file to uploads folder
+        save_path = os.path.join("uploads", uploaded_file.name)
+        with open(save_path, "wb") as f:
+            f.write(uploaded_file.getbuffer())
 
         # Process PDF
         with st.spinner("Processing PDF..."):
