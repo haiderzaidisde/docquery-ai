@@ -13,9 +13,11 @@ with st.sidebar:
 
     if uploaded_file is not None:
         # Save uploaded file to uploads folder
-        save_path = os.path.join("uploads", uploaded_file.name)
-        with open(save_path, "wb") as f:
-            f.write(uploaded_file.getbuffer())
+        # Create uploads folder if it doesn't exist
+os.makedirs("uploads", exist_ok=True)
+save_path = os.path.join("uploads", uploaded_file.name)
+with open(save_path, "wb") as f:
+    f.write(uploaded_file.getbuffer())
 
         # Process PDF
         with st.spinner("Processing PDF..."):
