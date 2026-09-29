@@ -12,10 +12,13 @@ from langchain_groq import ChatGroq
 from langchain_community.vectorstores import FAISS
 
 
-# Tesseract OCR engine location on Windows
-pytesseract.pytesseract.tesseract_cmd = (
-    r"C:\Program Files\Tesseract-OCR\tesseract.exe"
-)
+# Tesseract OCR engine location
+import os
+
+if os.name == "nt":
+    pytesseract.pytesseract.tesseract_cmd = (
+        r"C:\Program Files\Tesseract-OCR\tesseract.exe"
+    )
 
 
 def _secret(name: str) -> str:
